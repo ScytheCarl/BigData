@@ -9,6 +9,8 @@ import org.apache.hadoop.io.Text;
 import org.apache.hadoop.mapreduce.Reducer;
 import org.apache.hadoop.mapreduce.lib.input.FileInputFormat;
 import org.apache.hadoop.mapreduce.lib.output.FileOutputFormat;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.io.IOException;
 
@@ -18,6 +20,7 @@ import java.io.IOException;
 
 public class WordCountJob {
     public static class MyMapper extends Mapper<LongWritable, Text, Text, LongWritable>{
+        Logger logger = LoggerFactory.getLogger(MyMapper.class);
         /**
          * Mapper function with <k1, v1> inputs and <k2, v2> outputs
          * @param k1
@@ -29,7 +32,10 @@ public class WordCountJob {
         @Override
         protected void map(LongWritable k1, Text v1, Context context)
                 throws IOException, InterruptedException {
-            String[] words = v1.toString().split("");
+
+            logger.info("<k1,v1>=<" + k1.get() + "," + v1.toString() + ">");
+
+            String[] words = v1.toString().split(" ");
             for (String word : words){
                 Text k2 = new Text(word);
                 LongWritable v2 = new LongWritable(1L);
@@ -40,6 +46,7 @@ public class WordCountJob {
 
 
     public static class MyReducer extends Reducer<Text, LongWritable, Text, LongWritable>{
+        Logger logger = LoggerFactory.getLogger(MyReducer.class);
         /**
          *
          * @param k2
@@ -51,8 +58,10 @@ public class WordCountJob {
         @Override
         protected void reduce(Text k2, Iterable<LongWritable> v2s, Context context)
                 throws IOException, InterruptedException {
+
             long sum = 0L;
             for (LongWritable v2: v2s){
+                logger.info("<k2,v2s>=<" + k2.toString() + "," + v2.get() + ">");
                 sum += v2.get();
             }
 
