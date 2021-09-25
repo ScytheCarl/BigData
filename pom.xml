@@ -15,7 +15,7 @@
             <artifactId>hadoop-client</artifactId>
             <version>3.2.0</version>
             <!--只在编译时候才使用依赖，打jar包或者执行时候将不会使用-->
-            <!--<scope>provided</scope>-->
+            <scope>provided</scope>
         </dependency>
 
         <!-- log4j dependency -->
