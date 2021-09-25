@@ -83,5 +83,7 @@ public class SmallFileSeq {
             System.out.println("output filename: " + key.toString() + ",");
             System.out.println("file content: " + value + "");
         }
+
+        reader.close();
     }
 }
