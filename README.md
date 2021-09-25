@@ -1,5 +1,6 @@
 # Hadoop
 ## 1.Using Java to operate hadoop
+###### [Put/Get files into/from HDFS clusters by using Java](https://github.com/ScytheCarl/Hadoop/tree/master/src/main/java/com/imooc/hdfs)
 
 ## 2.Rpc
 ###### (1) Client side
