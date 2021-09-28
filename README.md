@@ -13,6 +13,7 @@
 - InputFormat Hierarchical analysis([Source code](https://archive.apache.org/dist/hadoop/common/hadoop-3.2.0/)):
 - <img width="1194" alt="截屏2021-09-22 下午11 14 41" src="https://user-images.githubusercontent.com/42943349/134461863-3de39893-14b8-448e-898d-39a2bd61fdf8.png">
 - Deal with many small files by using [SequenceFile](https://github.com/ScytheCarl/Hadoop/blob/master/src/main/java/com/imooc/mr/SmallFileSeq.java) and [MapFile](https://github.com/ScytheCarl/Hadoop/blob/master/src/main/java/com/imooc/mr/SmallFileMap.java)
+- Modify capacity-scheduler.xml to add more queue for your cluster except default queue. And by unsing "-Dmapreducee.job.queuename=offline" to [assgin queue](https://github.com/ScytheCarl/Hadoop/blob/master/src/main/java/com/imooc/mr/WordCountJobQueue.java) to MR job.
 ### Addtional thinking:
 - Q: Can i use zip or rar files to solve the problem of small files in HDFS, why? If not, why?
 
